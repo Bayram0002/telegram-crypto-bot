@@ -5,6 +5,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import datetime
 import os
 
+# Dəstəklənən intervallar
 interval_map = {
     "1m": "1m",
     "5m": "5m",
@@ -15,7 +16,8 @@ interval_map = {
     "1d": "1d"
 }
 
-exchange = ccxt.binance()
+# MEXC birjası
+exchange = ccxt.mexc()
 
 async def zz_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(context.args) != 2:
@@ -36,7 +38,7 @@ async def zz_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         plt.figure(figsize=(10, 5))
         plt.plot(timestamps, closes, marker='o')
-        plt.title(f"{symbol} ({interval}) Qrafik")
+        plt.title(f"{symbol} ({interval}) - MEXC")
         plt.xlabel("Vaxt")
         plt.ylabel("Qiymət (USDT)")
         plt.grid(True)
